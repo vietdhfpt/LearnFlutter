@@ -1,4 +1,4 @@
-package dhv.com.flutter_app_test
+package dhv.com.learn_flutter
 
 import io.flutter.embedding.android.FlutterActivity
 
