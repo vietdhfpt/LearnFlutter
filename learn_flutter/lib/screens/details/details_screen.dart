@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:learn_flutter/constants.dart';
 import 'package:learn_flutter/models/Product.dart';
+import 'package:learn_flutter/screens/details/components/body.dart';
 
 class DetailsScreen extends StatelessWidget {
   final Product product;
@@ -12,34 +13,39 @@ class DetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: product.color,
-      appBar: AppBar(
-        backgroundColor: product.color,
-        elevation: 0, // Hide separator line on navigation
-        leading: IconButton(
-          icon: SvgPicture.asset(
-            "assets/icons/back.svg",
-            color: Colors.white,
-          ),
-          onPressed: () => Navigator.pop(context),
+      appBar: buildAppBar(context),
+      body: Body(product: product),
+    );
+  }
+
+  AppBar buildAppBar(BuildContext context) {
+    return AppBar(
+      backgroundColor: product.color,
+      elevation: 0, // Hide separator line on navigation
+      leading: IconButton(
+        icon: SvgPicture.asset(
+          "assets/icons/back.svg",
+          color: Colors.white,
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: SvgPicture.asset(
-              "assets/icons/search.svg",
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: SvgPicture.asset(
-              "assets/icons/cart.svg",
-            ),
-            onPressed: () {},
-          ),
-          SizedBox(
-            width: kDefaultPadding / 2,
-          )
-        ],
+        onPressed: () => Navigator.pop(context),
       ),
+      actions: <Widget>[
+        IconButton(
+          icon: SvgPicture.asset(
+            "assets/icons/search.svg",
+          ),
+          onPressed: () {},
+        ),
+        IconButton(
+          icon: SvgPicture.asset(
+            "assets/icons/cart.svg",
+          ),
+          onPressed: () {},
+        ),
+        SizedBox(
+          width: kDefaultPadding / 2,
+        )
+      ],
     );
   }
 }
