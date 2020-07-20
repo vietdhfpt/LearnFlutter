@@ -1,6 +1,15 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:learn_flutter/constants.dart';
 import 'package:learn_flutter/models/Product.dart';
+import 'package:learn_flutter/screens/details/components/product_title_with_image.dart';
+import 'add_to_cart.dart';
+import 'cart_counter.dart';
+import 'color_and_size.dart';
+import 'counter_with_fav_button.dart';
+import 'description.dart';
 
 class Body extends StatelessWidget {
   final Product product;
@@ -18,50 +27,13 @@ class Body extends StatelessWidget {
             height: size.height,
             child: Stack(
               children: <Widget>[
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        "Aris Hand Bag",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        product.title,
-                        style: Theme.of(context).textTheme.headline4.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(text: "Price\n"),
-                                TextSpan(
-                                  text: "\$${product.price}",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline4
-                                      .copyWith(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
                 Container(
                   margin: EdgeInsets.only(top: size.height * 0.3),
-                  height: 500,
+                  padding: EdgeInsets.only(
+                    top: size.height * 0.14,
+                    left: kDefaultPadding,
+                    right: kDefaultPadding,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -69,7 +41,19 @@ class Body extends StatelessWidget {
                       topRight: Radius.circular(24),
                     ),
                   ),
+                  child: Column(
+                    children: <Widget>[
+                      ColorAndSize(product: product),
+                      SizedBox(height: kDefaultPadding / 2),
+                      Description(product: product),
+                      SizedBox(height: kDefaultPadding / 2),
+                      CounterWithFavButton(),
+                      SizedBox(height: kDefaultPadding / 2),
+                      AddToCart(product: product),
+                    ],
+                  ),
                 ),
+                ProductTitleWithImage(product: product),
               ],
             ),
           ),

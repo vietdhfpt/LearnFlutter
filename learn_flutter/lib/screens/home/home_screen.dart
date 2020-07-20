@@ -18,6 +18,8 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       leading: IconButton(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         icon: Icon(
           Icons.menu,
           color: kTextColor,
@@ -26,6 +28,8 @@ class HomeScreen extends StatelessWidget {
       ),
       actions: <Widget>[
         IconButton(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           icon: SvgPicture.asset(
             "assets/icons/search.svg",
             color: kTextColor,
@@ -33,6 +37,8 @@ class HomeScreen extends StatelessWidget {
           onPressed: () {},
         ),
         IconButton(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           icon: SvgPicture.asset(
             "assets/icons/cart.svg",
             color: kTextColor,
