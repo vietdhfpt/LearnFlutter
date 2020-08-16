@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/screens/todo/todo_list_container.dart';
+import 'package:learn_flutter/todo/blocs/todo_bloc.dart';
+import 'package:learn_flutter/todo/todo_list_container.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+import 'db/todo_database.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // await TodoDatabase.instance.init();
   runApp(MyApp());
 }
 
@@ -18,7 +24,10 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("Todo List"),
         ),
-        body: TodoListContainer(),
+        body: Provider<TodoBloc>.value(
+          value: TodoBloc(),
+          child: TodoListContainer(),
+        ),
       ),
     );
   }

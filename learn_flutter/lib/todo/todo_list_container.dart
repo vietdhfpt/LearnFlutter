@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/screens/todo/todo_header.dart';
-import 'package:learn_flutter/screens/todo/todo_list.dart';
+import 'package:learn_flutter/todo/todo_header.dart';
+import 'package:learn_flutter/todo/todo_list.dart';
 
 class TodoListContainer extends StatelessWidget {
   const TodoListContainer({

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/todo/blocs/todo_bloc.dart';
+import 'package:learn_flutter/todo/events/add_todo_event.dart';
+import 'package:provider/provider.dart';
 
 class TodoHeader extends StatelessWidget {
   const TodoHeader({
@@ -8,6 +11,7 @@ class TodoHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var textTodoController = TextEditingController();
+    var bloc = Provider.of<TodoBloc>(context);
 
     return Row(
       children: <Widget>[
@@ -24,6 +28,9 @@ class TodoHeader extends StatelessWidget {
         RaisedButton.icon(
           onPressed: () {
             print("Add");
+            bloc.event.add(
+              AddTodoEvent(content: textTodoController.text),
+            );
           },
           icon: Icon(Icons.add),
           label: Text("Add"),
