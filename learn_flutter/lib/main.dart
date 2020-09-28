@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/constants.dart';
+import 'package:learn_flutter/routes.dart';
+import 'package:learn_flutter/screens/splash/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,24 +15,17 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        fontFamily: "Muli",
+        scaffoldBackgroundColor: Colors.white,
+        textTheme: TextTheme(
+          bodyText1: TextStyle(color: kTextColor),
+          bodyText2: TextStyle(color: kTextColor),
+        ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter'),
-      ),
-      body: Container(),
+      // home: SplashScreen(),
+      initialRoute: SplashScreen.routeName,
+      routes: routes,
     );
   }
 }
