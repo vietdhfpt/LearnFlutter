@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/constants.dart';
 import 'package:learn_flutter/routes.dart';
 import 'package:learn_flutter/screens/splash/splash_screen.dart';
+import 'package:learn_flutter/theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,16 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: "Muli",
-        scaffoldBackgroundColor: Colors.white,
-        textTheme: TextTheme(
-          bodyText1: TextStyle(color: kTextColor),
-          bodyText2: TextStyle(color: kTextColor),
-        ),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      // home: SplashScreen(),
+      theme: theme(),
       initialRoute: SplashScreen.routeName,
       routes: routes,
     );
