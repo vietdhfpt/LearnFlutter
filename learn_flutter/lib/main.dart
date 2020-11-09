@@ -1,35 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learn_flutter/counter_view.dart';
+
+import 'counter_cubit.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(CounterApp());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: HomePage(),
-    );
-  }
+class CounterApp extends MaterialApp {
+  /// {@macro counter_app}
+  const CounterApp({Key key}) : super(key: key, home: const CounterPage());
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+class CounterPage extends StatelessWidget {
+  /// {@macro counter_page}
+  const CounterPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter'),
-      ),
-      body: Container(),
+    return BlocProvider(
+      create: (_) => CounterCubit(),
+      child: CounterView(),
     );
   }
 }
