@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,8 +21,29 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final assetsAudioPlayer = AssetsAudioPlayer();
+
+  final audio = Audio(
+    "assets/audios/city_airplane.mp3",
+    metas: Metas(
+      title: "City",
+      artist: "Florent Champigny",
+      album: "CountryAlbum",
+      image: MetasImage.asset(
+        "assets/images/country.jpg",
+      ),
+    ),
+  );
+
+  bool _play = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +51,26 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Flutter'),
       ),
-      body: Container(),
+      body: Center(
+        child: RaisedButton(
+          child: Text(
+            _play ? "pause" : "play",
+          ),
+          onPressed: () {
+            setState(() {
+              _play = !_play;
+              if (_play) {
+                assetsAudioPlayer.open(
+                  audio,
+                  showNotification: true,
+                );
+              } else {
+                assetsAudioPlayer.stop();
+              }
+            });
+          },
+        ),
+      ),
     );
   }
 }
